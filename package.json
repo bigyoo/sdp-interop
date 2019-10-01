@@ -16,7 +16,8 @@
   ],
   "main": "./lib/",
   "scripts": {
-    "test": "node $NODE_DEBUG_OPTION test/sdp_interop.js",
+    "build": "babel lib -d build",
+    "test": "node test/mytest.js",
     "coverage": "jscoverage lib && SDP_TRANSFORM_COV=1 nodeunit --reporter=lcov test",
     "coveralls": "npm run coverage | coveralls",
     "lint": "./node_modules/.bin/jshint .",
@@ -26,7 +27,18 @@
     "sdp-transform": "2.3.0"
   },
   "devDependencies": {
+    "@babel/cli": "^7.6.2",
+    "@babel/core": "^7.6.2",
+    "@babel/node": "^7.6.2",
+    "@babel/preset-env": "^7.6.2",
+    "@babel/register": "^7.6.2",
+    "@jitsi/sdp-simulcast": "0.2.1",
+    "jitsi-meet-logger": "github:jitsi/jitsi-meet-logger#6fff754a77a56ab52499f3559105a15886942a1e",
+    "js-utils": "github:jitsi/js-utils#446497893023aa8dec403e0e4e35a22cae6bc87d",
     "coveralls": "^2.11.1",
+    "deep-equal": "1.1.0",
+    "deep-diff": "1.0.2",
+    "diff": "4.0.1",
     "jscoverage": "^0.5.5",
     "jshint": "2.8.0",
     "precommit-hook": "^3.0.0",

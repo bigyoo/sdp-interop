@@ -1,0 +1,235 @@
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~ JVB (planB) ---- offer -----> MS (unified) ~~~~
+~~~ setRemoteDescription() 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+#303 [Log] setRemoteDescription::preTransform type: offer
+#414 [Log] setRemoteDescription::postTransform (simulcast) type: offer
+#513 [Log] setRemoteDescription::postTransform (stripRtx) type: offer
+#609 [Log] setRemoteDescription::postTransform (Plan A) type: offer
+#766 [Log] setRemoteDescription::postTransform (sim receive) type: offer
+
+-----
+#927 [Log] onsignalingstatechange have-remote-offer (scripts.js, line 13999
+
+#928 [Info] [modules\RTC\TraceablePeerConnection.js] – "<>: " – "TPC[1,p2p:false] ignored remote 'stream added' event for non-user streamid: mixedmslabel" (scripts.js, line 46307)
+#929 [Info] [modules\RTC\TraceablePeerConnection.js] – "<>: " – "TPC[1,p2p:false] remote track added:" – "9f7dbf32-8593-4499-a6d0-c07ec6644048-1" – "audio" (scripts.js, line 46307)
+
+#930  [Log] getRemoteDescription::preTransform type: offer
+#1081 [Log] getRemoteDescription::postTransform (Plan B) type: offer
+
+-----
+
+#1172 [Log] [modules\RTC\TraceablePeerConnection.js] – "<>: " – "TPC[1,p2p:false] associated ssrc" – "testconsultant-c79a26" – 4252689888 (scripts.js, line 46307)
+#1173 [Info] [modules\RTC\TraceablePeerConnection.js] – "<>: " – "TPC[1,p2p:false] remote track added:" – "fb282470-d97d-4b56-ba23-d071565fff8c-1" – "video" (scripts.js, line 46307)
+
+#1174 [Log] getRemoteDescription::preTransform type: offer
+#1325 [Log] getRemoteDescription::postTransform (Plan B) type: offer
+
+----------
+
+
+#1416 [Log] [modules\RTC\TraceablePeerConnection.js] – "<>: " – "TPC[1,p2p:false] associated ssrc" – "testconsultant-c79a26" – 2201140751 (scripts.js, line 46307)
+#1417 [Debug] [modules\connectivity\ParticipantConnectionStatus.js] – "<onRemoteTrackAdded>: " – "Detector on remote track added for: testconsultant-c79a26" (scripts.js, line 46307)
+#1418 [Log] setRemoteDescriptionOnSuccess undefined (scripts.js, line 13999)
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~ MS (unified) ----  answer -----> JVB (planB)
+~~~ setLocalDescription()
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#1419 [Debug] [modules\xmpp\JingleSessionPC.js] – "<>: " – "Renegotiate: creating answer" (scripts.js, line 46307)
+
+
+#1425 [Log] createAnswerOnSuccess::preTransform type: answer
+#1514 [Log] createAnswerOnSuccess::postTransform (Plan B) type: answer
+#1568 [Log] createAnswerOnSuccess::postTransform(inject ssrc group) type: answer
+#1622 [Log] createAnswerOnSuccess::postTransform (simulcast) type: answer
+
+----------------------------
+
+#1682 [Log] getRemoteDescription::preTransform type: offer
+#1827 [Log] getRemoteDescription::postTransform (Plan B) type: offer
+
+-----------------------
+
+#1918 [Debug] [modules\RTC\TraceablePeerConnection.js] – "<handleSuccess>: " – "Got local SSRCs MAP: " – Map {} (0) (scripts.js, line 46307)
+
+--------------------- ///////////////////////////
+
+#1919 [Debug] [modules\xmpp\JingleSessionPC.js] – "<>: " – "Renegotiate: setting local description" (scripts.js, line 46307)
+#1920 [Log] setLocalDescription::preTransform type: answer
+#1974 [Log] setLocalDescription::postTransform (Unified Plan) type: answer
+
+-------------
+
+#2063 [Log] onsignalingstatechange stable (scripts.js, line 13999
+#2064 [Log] setLocalDescriptionOnSuccess undefined (scripts.js, line 13999
+
+--------------
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~ ???
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+#2065 [Log] getLocalDescription::preTransform type: answer
+#2154 [Log] getLocalDescription::postTransform (Plan B) type: answer
+#2208 [Log] getLocalDescription::postTransform (inject ssrc group) type: answer
+
+-----------------
+[Info] [modules\xmpp\JingleSessionPC.js] – "<sendSessionAccept>: " – "Sending session-accept" –  (scripts.js, line 46307)
+<iq to="show_102770590_videoconf@conference.ejabberd-server/focus" type="set" xmlns="jabber:client" id="6c984a21-5ab8-47ee-9bc3-f0c007df7fb2:sendIQ">…</iq>
+
+<iq to="show_102770590_videoconf@conference.ejabberd-server/focus" type="set" xmlns="jabber:client" id="6c984a21-5ab8-47ee-9bc3-f0c007df7fb2:sendIQ">…</iq>
+
+--------------------
+
+[Log] getLocalDescription::preTransform type: answer
+[Log] getLocalDescription::postTransform (Plan B) type: answer
+[Log] getLocalDescription::postTransform (inject ssrc group) type: answer
+
+
+------------------------
+
+[Log] getLocalDescription::preTransform type: answer
+[Log] getLocalDescription::postTransform (Plan B) type: answer
+[Log] getLocalDescription::postTransform (inject ssrc group) type: answer
+
+-------------------
+
+[Log] getLocalDescription::preTransform type: answer
+[Log] getLocalDescription::postTransform (Plan B) type: answer
+#2853 [Log] getLocalDescription::postTransform (inject ssrc group) type: answer
+
+----------------
+
+#2930 [Log] getLocalDescription::preTransform type: answer
+#3020 [Log] getLocalDescription::postTransform (Plan B) type: answer
+#3075 [Log] getLocalDescription::postTransform (inject ssrc group) type: answer
+------------
+
+#3130 [Info] [modules\RTC\TraceablePeerConnection.js] – "<>: " – "add LocalTrack[1,audio] to: TPC[1,p2p:false]" (scripts.js, line 46307
+
+#3131 [Log] getRemoteDescription::preTransform type: offer
+#3282 [Log] getRemoteDescription::postTransform (Plan B) type: offer
+-------------
+
+#3373 [Debug] [modules\xmpp\JingleSessionPC.js] – "<_responderRenegotiate>: " – "Renegotiate: setting remote description" (scripts.js, line 46307)
+#3374 [Log] setRemoteDescription::preTransform type: offer
+
+#3465 [Info] Halt: There are no SSRC groups in the remote description. (scripts.js, line 42635)
+#3466 [Log] setRemoteDescription::postTransform (simulcast) type: offer
+
+#3557 [Debug] [modules\xmpp\RtxModifier.js] – "<stripRtx>: " – "RtxModifier doing nothing, no video ssrcGroups present" (scripts.js, line 46307)
+#3558 [Log] setRemoteDescription::postTransform (stripRtx) type: offer
+
+#3649 [Log] setRemoteDescription::postTransform (Plan A) type: offer
+#3800 [Log] setRemoteDescription::postTransform (sim receive) type: offer
+
+-----------
+
+#3955 [Log] onsignalingstatechange have-remote-offer (scripts.js, line 13999)
+#3956 [Log] setRemoteDescriptionOnSuccess undefined (scripts.js, line 13999)
+#3957 [Debug] [modules\xmpp\JingleSessionPC.js] – "<>: " – "Renegotiate: creating answer" (scripts.js, line 46307)
+
+#4055 [Log] createAnswerOnSuccess::postTransform (Plan B) type: answer
+#4112 [Log] createAnswerOnSuccess::postTransform(inject ssrc group) type: answer
+#4169 [Log] createAnswerOnSuccess::postTransform (simulcast) type: answer
+
+#4226 [Log] getRemoteDescription::preTransform type: offer
+#4377 [Log] getRemoteDescription::postTransform (Plan B) type: offer
+
+------------
+
+#4468 [Debug] [modules\RTC\TraceablePeerConnection.js] – "<handleSuccess>: " – "Got local SSRCs MAP: " – Map {"05a4156c-f6f2-46c9-b5ab-da7d70b01c65 e078df4d-7e0a-44e8-81ff-a01652a099de" => {ssrcs: [2914270205], groups: [], msid: "05a4156c-f6f2-46c9-b5ab-da7d70b01c65 e078df4d-7e0a-44e8-81ff-a01652a099de"}} (1) (scripts.js, line 46307)
+#4469 [Warning] [modules\RTC\TraceablePeerConnection.js] – "<>: " – "No local track matched with: 05a4156c-f6f2-46c9-b5ab-da7d70b01c65 994d7400-b115-4220-9cfc-f459987b2d4f in TPC[1,p2p:false]" (scripts.js, line 46307)
+#4470 [Debug] [modules\xmpp\JingleSessionPC.js] – "<>: " – "Renegotiate: setting local description" (scripts.js, line 46307)
+#4471 [Log] setLocalDescription::preTransform type: answer
+#4528 [Log] setLocalDescription::postTransform (Unified Plan) type: answer
+
+
+-------------
+
+#4620 [Log] onsignalingstatechange stable (scripts.js, line 13999)
+#4621 [Log] setLocalDescriptionOnSuccess undefined (scripts.js, line 13999)
+
+#4622 [Log] getLocalDescription::preTransform type: answer
+#4714 [Log] getLocalDescription::postTransform (Plan B) type: answer
+#4771 [Log] getLocalDescription::postTransform (inject ssrc group) type: answer
+
+--------------
+
+#4828 [Log] [modules\xmpp\JingleSessionPC.js] – "<notifyMySSRCUpdate>: " – "removal not necessary" (scripts.js, line 46307)
+#4829 [Info] [modules\xmpp\JingleSessionPC.js] – "<notifyMySSRCUpdate>: " – "Sending source-add" –  (scripts.js, line 46307)
+#4830 <iq to="show_102770590_videoconf@conference.ejabberd-server/focus" type="set" xmlns="jabber:client" id="009c4a0b-2668-4e2d-acb5-c178182ca748:sendIQ">…</iq>
+
+#4832 <iq to="show_102770590_videoconf@conference.ejabberd-server/focus" type="set" xmlns="jabber:client" id="009c4a0b-2668-4e2d-acb5-c178182ca748:sendIQ">…</iq>
+#4833 [Info] [modules\xmpp\JingleSessionPC.js] – "<>: " – "Replace track done!" (scripts.js, line 46307)
+
+#4834 [Log] getLocalDescription::preTransform type: answer
+#4926 [Log] getLocalDescription::postTransform (Plan B) type: answer
+#4983 [Log] getLocalDescription::postTransform (inject ssrc group) type: answer
+
+
+---------------
+
+#5040 [Info] [modules\RTC\TraceablePeerConnection.js] – "<>: " – "Clearing primary video SSRC!" (scripts.js, line 46307)
+#5041 [Info] [modules\RTC\TraceablePeerConnection.js] – "<>: " – "add LocalTrack[2,video] to: TPC[1,p2p:false]" (scripts.js, line 46307)
+#5042 [Log] getRemoteDescription::preTransform type: offer
+#5193 [Log] getRemoteDescription::postTransform (Plan B) type: offer
+
+
+#5284 [Debug] [modules\xmpp\JingleSessionPC.js] – "<_responderRenegotiate>: " – "Renegotiate: setting remote description" (scripts.js, line 46307)
+#5285 [Log] setRemoteDescription::preTransform type: offer
+
+---
+
+#5376 [Info] Halt: There are no SSRC groups in the remote description. (scripts.js, line 42635)
+#5377 [Log] setRemoteDescription::postTransform (simulcast) type: offer
+
+
+#5468 [Debug] [modules\xmpp\RtxModifier.js] – "<stripRtx>: " – "RtxModifier doing nothing, no video ssrcGroups present" (scripts.js, line 46307)
+#5469 [Log] setRemoteDescription::postTransform (stripRtx) type: offer
+#5560 [Log] setRemoteDescription::postTransform (Plan A) type: offer
+#5711 [Log] setRemoteDescription::postTransform (sim receive) type: offer
+
+------
+
+
+
+#5866 [Log] onsignalingstatechange have-remote-offer (scripts.js, line 13999)
+#5867 [Log] setRemoteDescriptionOnSuccess undefined (scripts.js, line 13999)
+#5868 [Debug] [modules\xmpp\JingleSessionPC.js] – "<>: " – "Renegotiate: creating answer" (scripts.js, line 46307)
+
+#5874 [Log] createAnswerOnSuccess::preTransform type: answer
+#5968 [Log] createAnswerOnSuccess::postTransform (Plan B) type: answer
+#6027 [Log] createAnswerOnSuccess::postTransform(inject ssrc group) type: answer
+
+#6086 [Log] SdpSimulcast: current ssrc cache:  – [] (0) (scripts.js, line 42902)
+#6087 [Log] SdpSimulcast: parsed primary ssrc 100342533 (scripts.js, line 42903)
+#6088 [Log] SdpSimulcast: Have not seen primary ssrc before, generating source data (scripts.js, line 42910)
+#6089 [Log] createAnswerOnSuccess::postTransform (simulcast) type: answer
+
+------
+
+#6153 [Log] getRemoteDescription::preTransform type: offer
+#6304 [Log] getRemoteDescription::postTransform (Plan B) type: offer
+
+-------------
+
+#6395 [Debug] [modules\RTC\TraceablePeerConnection.js] – "<handleSuccess>: " – "Got local SSRCs MAP: " – Map {"05a4156c-f6f2-46c9-b5ab-da7d70b01c65 e078df4d-7e0a-44e8-81ff-a01652a099de" => {ssrcs: [2914270205], groups: [], msid: "05a4156c-f6f2-46c9-b5ab-da7d70b01c65 e078df4d-7e0a-44e8-81ff-a01652a099de"}, "50d2515e-7880-4c0e-867a-6f5b40949ac6 16853985-923e-44a0-adc2-7e2d6f48b0ce" => {ssrcs: [100342533, 2136660424, 427386517], groups: Array, msid: "50d2515e-7880-4c0e-867a-6f5b40949ac6 16853985-923e-44a0-adc2-7e2d6f48b0ce"}} (2) (scripts.js, line 46307)
+#6396 Map {"05a4156c-f6f2-46c9-b5ab-da7d70b01c65 e078df4d-7e0a-44e8-81ff-a01652a099de" => {ssrcs: [2914270205], groups: [], msid: "05a4156c-f6f2-46c9-b5ab-da7d70b01c65 e078df4d-7e0a-44e8-81ff-a01652a099de"}, "50d2515e-7880-4c0e-867a-6f5b40949ac6 16853985-923e-44a0-adc2-7e2d6f48b0ce" => {ssrcs: [100342533, 2136660424, 427386517], groups: Array, msid: "50d2515e-7880-4c0e-867a-6f5b40949ac6 16853985-923e-44a0-adc2-7e2d6f48b0ce"}}Map (2)
+#6397 [Warning] [modules\RTC\TraceablePeerConnection.js] – "<>: " – "No local track matched with: 05a4156c-f6f2-46c9-b5ab-da7d70b01c65 994d7400-b115-4220-9cfc-f459987b2d4f in TPC[1,p2p:false]" (scripts.js, line 46307)
+#6398 [Warning] [modules\RTC\TraceablePeerConnection.js] – "<>: " – "No local track matched with: 50d2515e-7880-4c0e-867a-6f5b40949ac6 2150a267-077c-44c7-ba20-4fe895a94849 in TPC[1,p2p:false]" (scripts.js, line 46307)
+#6399 [Debug] [modules\xmpp\JingleSessionPC.js] – "<>: " – "Renegotiate: setting local description" (scripts.js, line 46307)
+#6400 [Log] setLocalDescription::preTransform type: answer
+
+-----------
+
+#6464 [Log] An unmapped  SSRC was found: v=0
+
+
+
+

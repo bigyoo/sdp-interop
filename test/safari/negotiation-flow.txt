@@ -199,7 +199,6 @@
 ------
 
 
-
 #5866 [Log] onsignalingstatechange have-remote-offer (scripts.js, line 13999)
 #5867 [Log] setRemoteDescriptionOnSuccess undefined (scripts.js, line 13999)
 #5868 [Debug] [modules\xmpp\JingleSessionPC.js] – "<>: " – "Renegotiate: creating answer" (scripts.js, line 46307)

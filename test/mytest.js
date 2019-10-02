@@ -61,33 +61,13 @@ var unbackslash = function (s) {
 // -------------------------------------------------------------------------------------
 
 
-QUnit.test('audioInactiveUnifiedPlan2PlanB', function (assert) {
-	/*jshint multistr: true */
-	var originUnifiedPlan = fs.readFileSync('test/test-resources/unified-plan.txt', 'utf8');
-
-	/*jshint multistr: true */
-	var expectedPlanB = fs.readFileSync('test/test-resources/expected-plan-b.txt', 'utf8');
-
-	var interop = new Interop();
-
-	var answer = new RTCSessionDescription({
-		type: 'answer',
-		sdp: originUnifiedPlan
-	});
-
-	var planBDesc = interop.toPlanB(answer);
-
-	assert.equal(unbackslash(planBDesc.sdp), unbackslash(expectedPlanB),
-		"Not expected Plan B output");
-});
-
 QUnit.test('01-planb-offer-from-jvb-conversion-to-unified-plan', function(assert) {
 
 	const interop = new Interop();
 	const rtxModifier = new RtxModifier.default();
 
 	// ------------------------------------------------------------------------------------------
-	// ~~~ Offer from JVB
+	// ~~~ PlanB offer from JVB set as Remote Description
 	// ------------------------------------------------------------------------------------------
 
 	// read SDP offer that was coming from JVB
@@ -96,10 +76,11 @@ QUnit.test('01-planb-offer-from-jvb-conversion-to-unified-plan', function(assert
 		type: 'offer',
 		sdp: offerPlanb
 	});
+
 	setOfferAsRemoteDesciption(assert, interop, rtxModifier, offerRTCSessionDesc);
 
 	// ------------------------------------------------------------------------------------------
-	// ~~~ Caching unified plan offer
+	// ~~~ Calling getRemoteDesc for caching the unified plan offer
 	// ------------------------------------------------------------------------------------------
 
 	// we pretend that the offer was stored and slightly manipulazted by the safari bowser
@@ -110,7 +91,7 @@ QUnit.test('01-planb-offer-from-jvb-conversion-to-unified-plan', function(assert
 	assertAfterTransformingBackTheOfferToPlanb(assert, planbOfferConvertedBackFromUnified.sdp);
 
 	// ------------------------------------------------------------------------------------------
-	// ~~~ Creating answer
+	// ~~~ Creating unified plan answer and converting it to planB
 	// ------------------------------------------------------------------------------------------
 	const answerSdpGeneratedBySafari = fs.readFileSync(BASE_PATH_OF_SAFARI_SDP_FOLDER + '08-answer-generated-by-safari-unified.txt', 'utf8');
 	var answerRTCSEssionDesc = new RTCSessionDescription({
@@ -127,9 +108,10 @@ QUnit.test('01-planb-offer-from-jvb-conversion-to-unified-plan', function(assert
 	assertAnswerAfterEveryTransformationApplied(assert, answerRTCSEssionDesc.sdp, '09-answer-after-every-transformation-applied.txt');
 	
 	// --------------------------------------------------------------------------------------------
-	// ~~~ SetLocalDescription
+	// ~~~ Converting planB ansert back to unified plan for setting it as LocalDescription
 	// --------------------------------------------------------------------------------------------
 	
+	// apply planB -> unified plan transformations
 	answerRTCSEssionDesc = _adjustLocalMediaDirection(answerRTCSEssionDesc);
 	answerRTCSEssionDesc = _ensureSimulcastGroupIsLast(answerRTCSEssionDesc);
 	answerRTCSEssionDesc = interop.toUnifiedPlan(answerRTCSEssionDesc);
@@ -148,7 +130,7 @@ QUnit.test('01-planb-offer-from-jvb-conversion-to-unified-plan', function(assert
 	const newOfferUnified = renegotiation(assert, interop, rtxModifier,  newOfferRTCSessionDesc);
 	
 	// ------------------------------------------------------------------------------------------
-	// ~~~ Renegotiation - creating answer
+	// ~~~ Renegotiation - creating unified plan  answer
 	// ------------------------------------------------------------------------------------------
 	
 	const newAnswerSdpGeneratedBySafari = fs.readFileSync(BASE_PATH_OF_SAFARI_SDP_FOLDER + '13-new-answer-generated-by-safari-unified.txt', 'utf8');
@@ -156,6 +138,8 @@ QUnit.test('01-planb-offer-from-jvb-conversion-to-unified-plan', function(assert
 		type: 'answer',
 		sdp: newAnswerSdpGeneratedBySafari
 	});
+
+	
 	
 	// apply planB transformation
 	newAnswerRTCSEssionDesc = interop.toPlanB(newAnswerRTCSEssionDesc);
@@ -166,15 +150,16 @@ QUnit.test('01-planb-offer-from-jvb-conversion-to-unified-plan', function(assert
 	//assertAnswerAfterEveryTransformationApplied(assert, newAnswerRTCSEssionDesc.sdp, '14-new-answer-after-every-transformation-applied.txt');
 	
 	// ------------------------------------------------------------------------------------------
-	// ~~~ Renegotiation - getRemoteDesc
+	// ~~~ Renegotiation - getRemoteDesc (caches the unified plan offer again)
 	// ------------------------------------------------------------------------------------------
 	interop.toPlanB(newOfferUnified);
 	
 	// ------------------------------------------------------------------------------------------
-	// ~~~ Renegotiation - setLocalDesc
+	// ~~~ Renegotiation - converting planB answer back to unified plan for setting it as LocalDesc
 	// ------------------------------------------------------------------------------------------
 
-	interop.toUnifiedPlan(newAnswerRTCSEssionDesc);
+	// here comes the ' An unmapped SSRC was found.' error !!
+	interop.toUnifiedPlan(newAnswerRTCSEssionDesc); 
 
 });
 
